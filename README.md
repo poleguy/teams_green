@@ -23,7 +23,7 @@ Users of this extension begin with a free trial.
 
 After they determine it is working as expected they click here to pay for it.
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif)](https://www.paypal.com/donate/?business=paypal@poleguy.com&no_recurring=0&item_name=Payment+for+Chrome+Teams+Screensaver+Extension&item_number=Enter+a+fair+price&amount=7.99&currency_code=USD)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif)](https://www.paypal.com/donate/?business=paypal@poleguy.com&no_recurring=0&item_name=Payment+for+Chrome+Teams+Green+Screensaver+Extension&item_number=Suggested+Price:+$7.99+USD&currency_code=USD)
 
 
 Payment provides the following benefits:
