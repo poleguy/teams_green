@@ -1,4 +1,6 @@
-# Microsoft Teams: Available if Screen On
+# Teams Green
+
+## Microsoft Teams: Available if Screen On
 
 This Chrome extension will keep your status as 'Available' when the screensaver is inactive
 
@@ -6,16 +8,19 @@ This Chrome extension will keep your status as 'Available' when the screensaver 
 
 ## Installation
 
-Install directly from source, but only after carefully reading through all of the source code and making it your own. I would not trust the chrome web store for anything interacting with workplace tools.
+Install extension directly from source. See neilpatel blog entry if you don't know how. But only after carefully reading through all of the source code and making it your own. I would not trust the chrome web store for anything interacting with workplace tools.
+
+Run ./teams_green
 
 ## Credits
 
-https://github.com/akump/MS-Teams-Always-Available
+* https://github.com/akump/MS-Teams-Always-Available
 
-https://github.com/saltafossi/MSTeamsWebStatus
+* https://github.com/saltafossi/MSTeamsWebStatus
 
 This is my first chrome extension. With akump's repo and this blog post I got going...
-https://neilpatel.com/blog/chrome-extension/
+
+* https://neilpatel.com/blog/chrome-extension/
 
 ## Payment
 
@@ -28,10 +33,10 @@ After they determine it is working as expected they click here to pay for it.
 
 Payment provides the following benefits:
 
-Ownership.
+* Ownership.
 
-Support via github.
+* Support via github.
 
-Support for the honor system.
+* Support for the honor system.
 
-Support for the author.
+* Support for the author.
