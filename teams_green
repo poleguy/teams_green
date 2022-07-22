@@ -14,9 +14,9 @@ do
     #if the screensaver is active I'm not around, so do nothing.
     # https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
     if [[ "$ACTIVE" =~ "inactive" ]]; then
-        cp MS-Teams-Always-Available/available.json MS-Teams-Always-Available/status.json
+        cp available.json status.json
     else
-        cp MS-Teams-Always-Available/busy.json MS-Teams-Always-Available/status.json
+        cp busy.json status.json
     fi
 
 
