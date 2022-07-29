@@ -10,7 +10,7 @@ This Chrome extension will keep your status as 'Available' when the screensaver 
 
 Install extension directly from source. See neilpatel blog entry if you don't know how. But only after carefully reading through all of the source code and making it your own. I would not trust the chrome web store for anything interacting with workplace tools.
 
-Run ./teams_green
+Run ./teams_green to monitor your screensaver and keep your status green until the screen goes off.
 
 ## Credits
 
