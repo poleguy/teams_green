@@ -1,28 +1,59 @@
 #!/bin/bash
-# teams status goes yellow if the chrome window is not active
-# Boss Man wants to see green when I'm at my machine I guess.
-# so hack it.
-
-# stop on error
 set -e
+# create a FIFO file, used to manage the I/O redirection from shell
+PIPE=$(mktemp -u --tmpdir ${0##*/}.XXXXXXXX)
+mkfifo $PIPE
+export PIPE
 
-while true
-do 
-    #ps aux | grep xfce4-screensaver
-    ACTIVE=$(xfce4-screensaver-command -q | grep active)
-    echo $ACTIVE
-    #if the screensaver is active I'm not around, so do nothing.
-    # https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
-    if [[ "$ACTIVE" =~ "inactive" ]]; then
-        cp available.json status.json
-    else
-        cp busy.json status.json
-    fi
+rm -f quit.txt
+# attach a file descriptor to the file
+exec 3<> $PIPE
 
+# add handler to manage process shutdown
+function on_exit() {
+    # this handles ctrl c
+    # send command to yad through pipe
+    echo "quit" >&3
+    rm -f $PIPE
+}
+trap on_exit EXIT
 
-    echo done
-    # teams goes inactive (yellow) after 5 minutes maybe... so do this every five minutes and it should match when I'm actually using my machine... e.g. screensaver on. Screensaver is set to five minutes.
-    # note, teams must be an active tab to be found.
-    #sleep 300
+function update_icon() {
+    exec 3<> $PIPE         # just in case
+    echo "icon:icon.png" >&3
+}
+export -f update_icon     
+
+# add handler for tray icon left click
+function on_click() {
+    exec 3<> $PIPE         # required
+    echo "clicked"
+    echo "icon:icon.png" >&3
+    update_icon
+}
+export -f on_click
+
+# add handler for right click menu Quit entry
+function on_quit() {
+    echo "quit" > ./quit.txt
+    exec 3<> $PIPE         # required
+    echo "quit" >&3
+}
+export -f on_quit
+
+# create the notification icon
+yad --notification                  \
+    --listen                        \
+    --image="icon.png"  \
+    --text="Teams Green Active"   \
+    --menu="Quit!bash -c on_quit" \
+    --no-middle \
+    --command="bash -c on_click" <&3 &
+
+while [ ! -f "quit.txt" ]; do
+    #echo "Press [CTRL+C] to stop.."
+    update_icon
+    bash ./teams_green_update
     sleep 2
 done
+rm quit.txt

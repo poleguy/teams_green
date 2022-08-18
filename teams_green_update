@@ -1,0 +1,28 @@
+#!/bin/bash
+# teams status goes yellow if the chrome window is not active
+# Boss Man wants to see green when I'm at my machine I guess.
+# so hack it.
+
+# stop on error
+set -e
+
+#while true
+#do 
+    #ps aux | grep xfce4-screensaver
+    ACTIVE=$(xfce4-screensaver-command -q | grep active)
+    echo $ACTIVE
+    #if the screensaver is active I'm not around, so do nothing.
+    # https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
+    if [[ "$ACTIVE" =~ "inactive" ]]; then
+        cp available.json status.json
+    else
+        cp busy.json status.json
+    fi
+
+
+    echo done
+    # teams goes inactive (yellow) after 5 minutes maybe... so do this every five minutes and it should match when I'm actually using my machine... e.g. screensaver on. Screensaver is set to five minutes.
+    # note, teams must be an active tab to be found.
+    #sleep 300
+#    sleep 2
+#done
