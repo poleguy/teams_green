@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
+
+# https://unix.stackexchange.com/questions/17717/refer-to-a-file-under-the-same-directory-of-a-script-found-in-path
+cd "${BASH_SOURCE%/*}" || exit
+
 # create a FIFO file, used to manage the I/O redirection from shell
 PIPE=$(mktemp -u --tmpdir ${0##*/}.XXXXXXXX)
 mkfifo $PIPE
